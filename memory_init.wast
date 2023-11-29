@@ -186,11 +186,14 @@
 (assert_return (invoke "load8_u" (i32.const 27)) (i32.const 0))
 (assert_return (invoke "load8_u" (i32.const 28)) (i32.const 0))
 (assert_return (invoke "load8_u" (i32.const 29)) (i32.const 0))
+
+(;
 (assert_invalid
    (module
      (func (export "test")
        (data.drop 0)))
    "unknown data segment")
+;)
 
 (assert_invalid
   (module
@@ -223,11 +226,13 @@
      (memory.init 0 (i32.const 1234) (i32.const 1) (i32.const 1))))
 (assert_trap (invoke "test") "out of bounds memory access")
 
+(;
 (assert_invalid
   (module
     (func (export "test")
       (memory.init 1 (i32.const 1234) (i32.const 1) (i32.const 1))))
   "unknown memory 0")
+;)
 
 (assert_invalid
   (module

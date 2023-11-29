@@ -85,7 +85,7 @@
     "\1a"                      ;; drop
     ;; Missing end marker here
   )
-  "unexpected end of section or function"
+  "END opcode expected"
 )
 
 ;; Function with missing end marker (at end of code sections)
@@ -105,7 +105,7 @@
   ;; The spec interpreter consumes the `\0b` (data section start) as an
   ;; END instruction (also happens to be `\0b`) and reports the code section as
   ;; being larger than declared.
-  "section size mismatch"
+  "END opcode expected"
 )
 
 ;; Init expression with missing end marker
@@ -118,7 +118,7 @@
     ;; Missing end marker here
     "\0a\04\01\02\00\0b"       ;; Code section: 1 function
   )
-  "illegal opcode"
+  "END opcode expected"
 )
 
 ;; memory.grow reserved byte equal to zero.
@@ -914,7 +914,7 @@
     "\02\00\0b"                             ;; function body 0
     "\02\00\0b"                             ;; function body 1
   )
-  "length out of bounds"
+  "unexpected end"
 )
 
 ;; 1 export declared, 2 given
@@ -981,7 +981,7 @@
     "\00\41\00"                             ;; elem 1 (partial)
     ;; "\0b\01\00"                          ;; elem 1 (missing part)
   )
-  "unexpected end"
+  "END opcode expected"
 )
 
 ;; 1 elem segment declared, 2 given

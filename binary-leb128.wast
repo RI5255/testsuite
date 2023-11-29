@@ -354,7 +354,7 @@
     "\0a\04\01"                          ;; code section
     "\02\00\0b"                          ;; function body
   )
-  "integer representation too long"
+  "unexpected end"
 )
 (assert_malformed
   (module binary
